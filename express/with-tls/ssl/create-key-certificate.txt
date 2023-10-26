@@ -1,0 +1,5 @@
+
+openssl genrsa -out private-server-key.pem 4096
+openssl req -new -key private-server-key.pem -out csr-server.pem
+openssl x509 -req -in csr-server.pem -signkey private-server-key.pem -out public-server-cert.pem
+openssl pkcs12 -export -out with-tls.pfx -inkey .\private-server-key.pem -in .\public-server-cert.pem
